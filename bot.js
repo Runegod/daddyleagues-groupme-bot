@@ -6,8 +6,8 @@ var googleAuth = require('google-auth-library');
 var GoogleSpreadsheet = require('google-spreadsheet');
 
 
-var LEAGUE_NAME = "YOUR LEAGUE NAME HERE";
-var SPREADSHEET_KEY = "YOUR GOOGLE SPREADSHEET KEY HERE";
+var LEAGUE_NAME = "LoA2017 Creep Edition";
+var SPREADSHEET_KEY = "1ZqJ2A-gNye8Gf-NWdl0gyAH3pW_N_viH7Hdthc_C-lk";
 var botID = process.env.BOT_ID;
 
 function respond() {
