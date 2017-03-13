@@ -29,6 +29,18 @@ function respond() {
 	  botRegexPTK = /^\/ptackle/;
 	  botRegexPSK = /^\/psack/;
 	  botRegexPIT = /^\/pint/;
+	botRegexSalt = /^\/salt/;
+	botRegexSDL = /^\/SDL/i;
+        botRegexJN = /^\/trade/;
+	botRegexRules = /^\/rules/;
+	botODB = /(.*\s+)(.*odb)(\s+.*)/i; 
+        botDuck = /^\/duck/;
+	botRegexP = /^\/PDL/i;
+	botRegexTw = /^\/twitch/i;
+	
+  var teamAb = ["NE","NO","ARI","PHI","CLE","TEN","OAK","DAL","IND","SEA","CIN","PIT","JAC"
+                ,"BAL","SD","DEN","MIN","ATL","KC","NYG","GB","DET","HOU","STL","CHI","CAR",
+                "MIA","BUF","SF","WAS","NYJ","TB"]
 
 if(request.text && botRegexSTS.test(request.text)) {
     this.res.writeHead(200);
@@ -109,7 +121,52 @@ if(request.text && botRegexSTS.test(request.text)) {
     this.res.writeHead(200);
 	getNfc();
 	this.res.end();
-  }    
+  }
+	
+	else if(request.text && botRegexSalt.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("https://i.imgur.com/B5BSVqH.png");
+    this.res.end();
+  } 
+  else if(request.text && botRegexJN.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("To Submit a Trade click: https://goo.gl/forms/n7jOMFyhV9marlwZ2");
+    this.res.end();
+  }
+	else if(request.text && botRegexRules.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("https://docs.google.com/document/d/1592OKl5dxzIlVVDUzwPGWfawb93H-1ovZ7LVnNxsigk/edit");
+    this.res.end();
+  } 
+  else if(request.text && botRegexP.test(request.text)) {
+    this.res.writeHead(200);
+    var req = request.text.substring(5,request.text.length);
+    var rep = req.replace(/ /,"+");
+    postMessage("http://www.daddyleagues.com/TLOA/players?name="+rep+"&position=all&team=all");
+    
+    this.res.end();
+  }  
+    else if(request.text && botRegexSDL.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("http://daddyleagues.com/TLOA/team/"+request.text.substring(5,8)+"/schedule");
+    this.res.end();
+  } 
+  
+  else if(request.text && botRegexTw.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("http://www.twitch.tv/"+request.text.substring(8,request.text.length));
+    this.res.end();
+  }  
+  else if(request.text && botODB.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("OBJ*");
+    this.res.end();
+  } 
+  else if(request.text && botDuck.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("http://media3.giphy.com/media/YCseTHF2I6CCA/giphy.gif");
+    this.res.end();
+  }
   else {
     console.log("don't care!");
     this.res.writeHead(200);
