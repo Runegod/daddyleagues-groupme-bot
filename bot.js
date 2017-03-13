@@ -6,7 +6,7 @@ var googleAuth = require('google-auth-library');
 var GoogleSpreadsheet = require('google-spreadsheet');
 
 
-var LEAGUE_NAME = "LoA";
+var LEAGUE_NAME = "TLOA";
 var SPREADSHEET_KEY = "1ZqJ2A-gNye8Gf-NWdl0gyAH3pW_N_viH7Hdthc_C-lk";
 var botID = process.env.BOT_ID;
 
