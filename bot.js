@@ -6,7 +6,7 @@ var googleAuth = require('google-auth-library');
 var GoogleSpreadsheet = require('google-spreadsheet');
 
 
-var LEAGUE_NAME = "LoA2017 Creep Edition";
+var LEAGUE_NAME = "LoA";
 var SPREADSHEET_KEY = "1ZqJ2A-gNye8Gf-NWdl0gyAH3pW_N_viH7Hdthc_C-lk";
 var botID = process.env.BOT_ID;
 
@@ -35,13 +35,9 @@ function respond() {
 	botRegexRules = /^\/rules/;
 	botODB = /(.*\s+)(.*odb)(\s+.*)/i; 
         botDuck = /^\/duck/;
-	botRegexP = /^\/PDL/i;
+	botRegexPDL = /^\/PDL/i;
 	botRegexTw = /^\/twitch/i;
 	
-  var teamAb = ["NE","NO","ARI","PHI","CLE","TEN","OAK","DAL","IND","SEA","CIN","PIT","JAC"
-                ,"BAL","SD","DEN","MIN","ATL","KC","NYG","GB","DET","HOU","STL","CHI","CAR",
-                "MIA","BUF","SF","WAS","NYJ","TB"]
-
 if(request.text && botRegexSTS.test(request.text)) {
     this.res.writeHead(200);
 	postMessage("Commands for " + LEAGUE_NAME + ":\n/scores\n/afcstandings\n/nfcstandings\n/toff - Team Offense Leaders\n/tpass - Team Passing Leaders\n/trush - Team Rushing Leaders\n/tdef - Team Defensive Leaders\n/tdpass - Team Defensive Passing Leaders\n/tdrush - Team Defensive Rushing Leaders\n/ppass - Leading Passers\n/prush - Leading Rushers\n/prec - Leading Receivers\n/ptackle - Leading Tacklers\n/psack - Sack Leaders\n/pint - Interception Leaders\n");
@@ -138,7 +134,7 @@ if(request.text && botRegexSTS.test(request.text)) {
     postMessage("https://docs.google.com/document/d/1592OKl5dxzIlVVDUzwPGWfawb93H-1ovZ7LVnNxsigk/edit");
     this.res.end();
   } 
-  else if(request.text && botRegexP.test(request.text)) {
+  else if(request.text && botRegexPDL.test(request.text)) {
     this.res.writeHead(200);
     var req = request.text.substring(5,request.text.length);
     var rep = req.replace(/ /,"+");
