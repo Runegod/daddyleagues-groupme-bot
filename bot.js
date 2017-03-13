@@ -33,8 +33,6 @@ function respond() {
 	botRegexSDL = /^\/SDL/i;
         botRegexJN = /^\/trade/;
 	botRegexRules = /^\/rules/;
-	botODB = /(.*\s+)(.*odb)(\s+.*)/i; 
-        botDuck = /^\/duck/;
 	botRegexPDL = /^\/PDL/i;
 	botRegexTw = /^\/twitch/i;
 	
@@ -153,16 +151,7 @@ if(request.text && botRegexSTS.test(request.text)) {
     postMessage("http://www.twitch.tv/"+request.text.substring(8,request.text.length));
     this.res.end();
   }  
-  else if(request.text && botODB.test(request.text)) {
-    this.res.writeHead(200);
-    postMessage("OBJ*");
-    this.res.end();
-  } 
-  else if(request.text && botDuck.test(request.text)) {
-    this.res.writeHead(200);
-    postMessage("http://media3.giphy.com/media/YCseTHF2I6CCA/giphy.gif");
-    this.res.end();
-  }
+	
   else {
     console.log("don't care!");
     this.res.writeHead(200);
